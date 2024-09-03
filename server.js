@@ -27,15 +27,13 @@ app.use(
   })
 );
 
-// Redirecciona las solicitudes al servicio TOTP
 app.use(
   "/totp",
-  authenticateToken,
   createProxyMiddleware({
-    target: "http://localhost:4002", // URL del servicio TOTP
+    target: "http://localhost:4002", 
     changeOrigin: true,
     pathRewrite: {
-      "^/totp": "", // Elimina el prefijo '/totp' antes de enviar la solicitud
+      "^/totp": "", 
     },
   })
 );
